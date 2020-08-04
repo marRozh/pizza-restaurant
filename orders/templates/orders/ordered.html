@@ -1,0 +1,104 @@
+{% extends 'orders/base.html' %}
+
+{% block title %}
+Log In Page
+{% endblock %}
+
+{% block body %}
+
+<div class="jumbotron" id="ordered-jumbotron">
+    <div class="container" id="ordered-container">
+
+        <h1>Your Orders</h1>
+
+        
+        {% if pending %}
+        <h3>Your Pending Orders:</h3>
+            {% for i in pending_nums %}
+                <h5>Order Number: {{ i }}</h5>
+                <div class="pendng">
+                    <table class="table" id="orderstablepending">
+                        <thead>
+                            <tr>
+                                <th scope="col">Item Ordered</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Toppings</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for x in pending %}
+                                {% if x.order_number == i %}
+                                    <tr>
+                                        <td><p>{{ x.item_name }} ({{ x.item_category }})</p></td>
+                                        <td>                                            
+                                            {% if x.item_size %}
+                                                <p>{{ x.item_size|capfirst }}</p>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if x.item_toppings_list %}
+                                                <p>{{ x.item_toppings_list|capfirst }}</p>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div id="no-pending">
+                <p>You don't have any pending orders.</p>
+            </div>
+        {% endif %}
+
+
+
+        
+        {% if complete %}
+        <h3>Your Complete Orders:</h3>
+            {% for j in complete_nums %}
+                    <h5>Order Number: {{ j }}</h5>
+                    <div class="complete">
+                        <table class="table" id="orderstablecomplete">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item Ordered</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Toppings</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for y in complete %}
+                                    {% if x.order_number == i %}
+                                        <tr>
+                                            <td><p>{{ y.item_name }} ({{ y.item_category }})</p></td>
+                                            <td>                                            
+                                                {% if y.item_size %}
+                                                    <p>{{ y.item_size|capfirst }}</p>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if y.item_toppings_list %}
+                                                    <p>{{ y.item_toppings_list|capfirst }}</p>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                {% endfor %}
+            {% else %}
+                <div id="no-complete">
+                    <p>You don't have any complete orders.</p>
+                </div>
+            {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

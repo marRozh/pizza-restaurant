@@ -1,0 +1,836 @@
+$light-blue: #54f2f2;
+$blue: #2274a5;
+$yellow: #f4e04d;
+$pink: #de6e84;
+$white: #fcfcfc;
+$light-green: #7CAA7C;
+$dark-green: #175703;
+$bright-red: #E60002;
+$dark-red: #B00000;
+$cream: #F1E7DE;
+$dark-cream: #c49f8f;
+$olive: #30262E;
+
+$accent-font: 'Bebas Neue', cursive;
+$regular-font: 'Roboto', sans-serif;
+$second-accent-font: 'Satisfy', cursive;
+
+%login-button {
+    border: none;
+    border-radius: 5px;
+    background: #de6e84;
+    box-shadow:  5px 5px 6px #1d171c,
+                inset 5px 5px 7px #ff85a0;;
+}
+
+%login-button-active {
+    border: none;
+    border-radius: 5px;
+    background: #de6e84;
+    box-shadow: inset 5px 5px 7px #af5768, 
+            inset -5px -5px 7px #ff85a0;
+}
+
+%jumbotron-settings {
+    height: 100%;
+    background-image: url('../orders/pizzabg1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin-bottom: 0;
+    overflow-y: scroll;
+}
+
+%container-settings {
+    width: 50%;
+    margin-right: 0;
+    background-color: $dark-cream;
+    background-image: linear-gradient(17deg, $dark-cream 0%, $cream 100%);
+    border-radius: 5px;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    
+}
+
+%add-button {
+    font-size: 0.6rem;
+    height: 20px;
+    width: 30px;
+    padding: 2px;
+    border: none;
+    background-color: $bright-red;
+    color: $cream;
+    border-radius: 5px;
+    margin-left: 0.2rem;
+}
+
+%checkout-button {
+    color: $dark-green;
+    font-family: $accent-font;
+    padding: 5px 10px;
+    font-size: 1.5rem;
+    border-radius: 7px;
+    border: none;
+    background: #c49f8f;
+    box-shadow:  5px 5px 10px #7a6359, 
+             -5px -5px 10px #e3b8a6;
+}
+
+%checkout-button-active{
+    color: $dark-green;
+    font-family: $accent-font;
+    padding: 5px 10px;
+    font-size: 1.5rem;
+    border-radius: 7px;
+    border: none;
+    background: #c49f8f;
+    box-shadow: inset 5px 5px 7px #b29182, 
+                inset -5px -5px 7px #d6ad9c;
+}
+
+%main-heading {
+    color: $dark-red;
+    text-align: center;
+    font-family: $second-accent-font;
+}
+
+%secondary-heading {
+    color: $dark-green;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 2rem;
+}
+
+%input-fields {
+    border: none;
+    border-radius: 5px;
+    background: #ffffff;
+    box-shadow: inset 7px 7px 11px #d9d9d9, 
+    inset -7px -7px 11px #ffffff;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: $regular-font;
+    color: $olive;
+}
+
+h1 {
+    font-size: 2rem;
+}
+h2 {
+    font-size: 1.6rem;
+}
+h3 {
+    font-size: 1.4rem;
+}
+h4 {
+    font-size: 1.2rem;
+}
+h5 {
+    font-size: 1rem;
+}
+p {
+    font-size: 0.6rem;
+}
+
+
+nav {
+    font-family: $accent-font;
+    background-color: $olive;
+    
+    #website-heading, #nav-orders, #nav-cart {
+        color: $cream;
+        font-size: 1.5rem;
+    }
+
+    #nav-orders:hover {
+        text-decoration: none;
+    }
+
+    #nav-cart:hover {
+        text-decoration: none;
+    }
+
+    #right-side-nav {
+        width: 35%;
+        display: inline-flex;
+        justify-content: space-around;
+    }
+
+    #logout-button {
+        @extend %login-button;
+    }
+
+    #logout-button:active {
+        @extend %login-button-active;
+    }
+
+    #nav-logout {
+        color: $cream;
+        font-family: $regular-font;
+    }
+
+    #nav-logout:hover {
+        text-decoration: none;
+    }
+}
+
+
+#index-jumbotron {
+    @extend %jumbotron-settings;
+
+    #index-container {
+        @extend %container-settings;
+
+        #welcome-message {
+            @extend %main-heading;
+        }
+
+        #div-dashboard {
+            width: 100px;
+            margin-left: auto;
+            margin-right: 0;
+            padding: 10px 10px;
+            border-radius: 5px;
+            font-family: $accent-font;
+            font-size: 1.3rem;
+            background-color: $blue;
+            margin-top: -4rem;
+
+            a {
+                color: $cream;
+                margin: auto;
+            }
+
+            a:hover {
+                text-decoration: none;
+            }
+
+        }
+
+        #menu-title {
+            @extend %secondary-heading;
+        }
+
+        #menu {
+            width: 85%;
+            margin: auto;
+
+            h4 {
+                color: $light-green;
+                font-family: $accent-font;
+            }
+
+            th {
+                font-size: 0.8rem;
+                padding: 8px;
+                border: none;
+            }
+
+            td {
+                padding: 8px;
+                border: none;
+            }
+
+            .menu-column-1 h5 {
+                font-family: $accent-font;
+            }
+
+            #special-pizza-text {
+                color: $dark-red;
+            }
+
+            #regular-pizza {
+                
+                .regular-form-add {
+                    display: inline-flex;
+                } 
+
+                .regular-form-add button {
+                    @extend %add-button;
+                }
+                .regular-form-add button:focus {
+                    outline: none;
+                }
+
+                .regular-form-add label, p{
+                    font-size: 0.8rem;
+                }
+
+                .regular-toppings label, input {
+                font-size: 0.8rem;
+                display: inline-block;
+                vertical-align: middle;
+                margin: 0;
+                }
+
+                .regular-toppings  {
+                    display: none;
+                }
+            }
+
+            #sicilian-pizza {
+
+                .sicilian-form-add {
+                    display: inline-flex;
+                }
+    
+    
+                .sicilian-form-add button {
+                    @extend %add-button;
+                }
+                .sicilian-form-add button:focus {
+                    outline: none;
+                }
+    
+                .sicilian-form-add label, p{
+                    font-size: 0.8rem;
+                }
+
+                .regular-toppings label, input {
+                    font-size: 0.8rem;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 0;
+                }
+
+            }
+
+            #pasta {
+                button {
+                    @extend %add-button;
+                }
+                button:focus {
+                    outline: none;
+                }
+
+                p {
+                    font-size: 0.8rem;
+                    margin: 0;
+                }
+
+                .menu-column-4 p, form {
+                    display: inline-flex;
+                    vertical-align: middle;
+                    width: 45%;
+                }
+
+                .menu-column-1{
+                    width: 40%;
+                }
+                .menu-column-2{
+                    width: 10%;
+                }
+            }
+
+            #salad {
+                button {
+                    @extend %add-button;
+                }
+                button:focus {
+                    outline: none;
+                }
+
+                p {
+                    font-size: 0.8rem;
+                    margin: 0;
+                }
+
+                .menu-column-4 p, form {
+                    display: inline-flex;
+                    vertical-align: middle;
+                    width: 45%;
+                }
+
+                .menu-column-1{
+                    width: 40%;
+                }
+                .menu-column-2{
+                    width: 10%;
+                }
+            }
+
+            #platters {
+                button {
+                    @extend %add-button;
+                }
+                button:focus {
+                    outline: none;
+                }
+
+                p {
+                    font-size: 0.8rem;
+                    margin: 0;
+                }
+
+                .menu-column-4 p, form {
+                    display: inline-flex;
+                    vertical-align: middle;
+                }
+
+                .menu-column-1{
+                    width: 40%;
+                }
+                .menu-column-2{
+                    width: 30%;
+                }
+            }
+
+            #subs {
+                button {
+                    @extend %add-button;
+                }
+                button:focus {
+                    outline: none;
+                }
+
+                .subs-form-add label {
+                    font-size: 0.8rem;
+                    margin: 0;
+                }
+
+                .subs-form-add {
+                    display: inline-flex;
+                }
+
+                div input, div label {
+                    font-size: 0.8rem;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 0;
+                }
+            }
+
+        }
+
+        #checkout-box {
+            margin-right: auto;
+            margin-left: auto;
+            text-align: center;
+
+            a {
+                @extend %checkout-button;
+            }
+
+            a:active {
+                @extend %checkout-button-active;
+            }
+
+            a:focus {
+                border: none;
+                outline: none;
+            }
+
+            a:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+#ordered-jumbotron {
+    @extend %jumbotron-settings;
+
+    #ordered-container {
+        @extend %container-settings;
+
+        h1 {
+            @extend %main-heading;
+        }
+
+        h3 {
+            @extend %secondary-heading;
+        }
+
+        h5 {
+            color: $bright-red;
+        }
+
+        table th {
+            font-size: 0.8rem;
+            padding: 8px;
+            border: none;
+        }
+
+        table td {
+            padding: 8px;
+            border: none;
+        }
+
+        table p {
+            margin-bottom: 0.2rem;
+        }
+
+        #no-pending, #no-complete {
+            margin-top: 3rem;
+
+            p {
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+#shoppingcart-jumbotron {
+    @extend %jumbotron-settings;
+
+    #shoppingcart-container {
+        @extend %container-settings;
+
+        h1 {
+            @extend %main-heading;
+        }
+
+        form {
+            margin: auto;
+            width: 20%;
+
+            button {
+                @extend %checkout-button;
+            }
+            button:active {
+                @extend %checkout-button-active;
+            }
+            button:focus {
+                outline: none;
+            }
+        }
+
+        table th {
+            font-size: 0.8rem;
+            padding: 8px;
+            border: none;
+        }
+
+        table td {
+            padding: 8px;
+            border: none;
+        }
+
+        h3 {
+            color: $bright-red;
+            font-family: $accent-font;
+        }
+
+        table p {
+            font-size: 0.8rem;
+        }
+    }
+}
+
+#dashboard-jumbotron {
+    @extend %jumbotron-settings;
+
+    #dashboard-container {
+        @extend %container-settings;
+        margin-top: 4rem;
+
+        table th {
+            font-size: 0.8rem;
+            padding: 8px;
+            border: none;
+        }
+
+        table td {
+            padding: 8px;
+            border: none;
+        }
+
+        button {
+            @extend %checkout-button;
+            font-size: 1rem;
+        }
+        button:active {
+            @extend %checkout-button-active;
+            font-size: 1rem;
+        }
+        button:focus {
+            outline: none;
+        }
+
+        h1 {
+            @extend %main-heading;
+        }
+
+        h5 {
+            color: $bright-red;
+        }
+    }
+}
+
+#login-jumbotron {
+    @extend %jumbotron-settings;
+
+    #login-container {
+        @extend %container-settings;
+        margin-top: 8rem;
+
+        h1 {
+            @extend %main-heading;
+        }
+
+        form {
+            margin: auto;
+            width: 50%;
+        }
+
+        label {
+            color: $dark-green;
+        }
+
+        input {
+            @extend %input-fields;
+        }
+
+        button {
+            @extend %checkout-button;
+            display: flex;
+            margin: auto;
+
+        }
+        button:active {
+            @extend %checkout-button-active;
+        }
+
+        a {
+            font-family: $accent-font;
+            color: $dark-green;
+            font-size: 1.5rem;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: $light-green;
+        }
+    }
+}
+
+#register-jumbotron {
+    @extend %jumbotron-settings;
+
+    #register-container {
+        @extend %container-settings;
+        margin-top: 1rem;
+
+        h1 {
+            @extend %main-heading;
+        }
+
+        label {
+            color: $dark-green;
+            font-family: $accent-font;
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        input {
+            @extend %input-fields;
+            height: 1.7rem;
+            width: 20rem;
+        }
+        input:focus {
+            outline: none;
+        }
+
+        .helptext {
+            font-size: 0.5rem;
+            color: $bright-red;
+        }
+
+        form {
+            margin: auto;
+            width: 50%;
+        }
+
+        form p {
+             display: flex;
+             flex-direction: column;
+        }
+
+        form ul {
+            font-size: 0.5rem;
+            margin-bottom: 0;
+            padding-left: 10px;
+            color: $bright-red;
+        }
+
+        button {
+            @extend %checkout-button;
+            display: flex;
+            margin: auto;
+
+        }
+        button:active {
+            @extend %checkout-button-active;
+        }
+
+        a {
+            font-family: $accent-font;
+            color: $dark-green;
+            font-size: 1.5rem;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: $light-green;
+        }
+    }
+}
+
+.select-toppings {
+    color: $blue;
+}
+
+.select-toppings:hover {
+    color: $olive;
+    cursor: pointer;
+}
+
+.menu-column-1{
+    width: 20%;
+}
+.menu-column-2{
+    width: 50%;
+}
+.menu-column-3{
+    width: 15%;
+}
+.menu-column-4{
+    width: 15%;
+}
+
+
+.dashboard-col-1 {
+    width: 15%;
+}
+.dashboard-col-2 {
+    width: 15%;
+}
+.dashboard-col-3 {
+    width: 20%;
+}
+.dashboard-col-4 {
+    width: 10%;
+}
+.dashboard-col-5 {
+    width: 30%;
+}
+.dashboard-col-6 {
+    width: 10%;
+}
+
+@media only screen and (min-width: 1214px) and (max-width: 1249px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.4rem;
+    }
+    h3 {
+        font-size: 1.2rem;
+    }
+    h4 {
+        font-size: 1rem;
+    }
+    h5 {
+        font-size: 0.8rem;
+    }
+    p {
+        font-size: 0.6rem;
+    }
+}
+
+@media only screen and (min-width: 1030px) and (max-width: 1213px) {
+
+    #index-container, #shoppingcart-container, #ordered-container, #login-container, #register-container, #dashboard-container {
+        width: 60%!important;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.4rem;
+    }
+    h3 {
+        font-size: 1.2rem;
+    }
+    h4 {
+        font-size: 1rem;
+    }
+    h5 {
+        font-size: 0.8rem;
+    }
+    p {
+        font-size: 0.6rem;
+    }
+
+    #right-side-nav {
+        width: 55%!important;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1029px) {
+
+    #index-container, #shoppingcart-container, #ordered-container, #login-container, #register-container, #dashboard-container {
+        width: 70%!important;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.4rem;
+    }
+    h3 {
+        font-size: 1.2rem;
+    }
+    h4 {
+        font-size: 1rem;
+    }
+    h5 {
+        font-size: 0.8rem;
+    }
+    p {
+        font-size: 0.6rem;
+    }
+
+    #right-side-nav {
+        width: 55%!important;
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 991px) {
+
+    #index-container, #shoppingcart-container, #ordered-container, #login-container, #register-container, #dashboard-container {
+        width: 70%!important;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.4rem;
+    }
+    h3 {
+        font-size: 1.2rem;
+    }
+    h4 {
+        font-size: 1rem;
+    }
+    h5 {
+        font-size: 0.8rem;
+    }
+    p {
+        font-size: 0.6rem;
+    }
+
+    #right-side-nav {
+        width: 55%!important;
+    }
+}

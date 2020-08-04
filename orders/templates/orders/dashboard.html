@@ -1,0 +1,81 @@
+{% extends 'orders/base.html' %}
+
+{% block title %}
+Log In Page
+{% endblock %}
+
+{% block body %}
+
+<div class="jumbotron" id="dashboard-jumbotron">
+    <div class="container" id="dashboard-container">
+
+        <h1>Admin Dashboard</h1>
+
+            {% if order_nums %}
+                {% for y in order_nums %}
+                    <h5>Order Number: {{y}}</h5>
+                    <form action="{% url 'complete' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" name="completeorder" value="{{ y }}">
+                            Complete Order
+                        </button>
+                    </form>
+
+                    <table class="table" id="dashboard">
+                        <thead>
+                            <tr>
+                                <th scope="col">User</th>
+                                <th scope="col">Date & Time</th>
+                                <th scope="col">Item Ordered</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Toppings</th>
+                                <th scope="col">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for x in orders %}
+                                {% if x.order_number == y %}
+
+                                    <tr>
+                                        <td class="dashboard-col-1">
+                                            <p>{{ x.user_name }}</p>
+                                        </td>
+                                        <td class="dashboard-col-2">
+                                            <p>{{ x.order_date }} 
+                                                <br>
+                                            <p>{{ x.order_time }}</p>
+                                        </td>
+                                        <td class="dashboard-col-3">
+                                            <p> {{ x.item_name }} ({{ x.item_category }})</p>
+                                        </td>
+                                        <td class="dashboard-col-4">
+                                            {% if x.item_size %}
+                                                <p>{{ x.item_size|capfirst }}</p>
+                                            {% endif %}
+                                        </td>
+                                        <td class="dashboard-col-5">
+                                            {% if x.item_toppings_num > 0 %}
+                                                <p># {{ x.item_toppings_num }}</p>
+                                            {% endif %}
+                                            <br>
+                                            {% if x.item_toppings_list %}
+                                                <p>{{ x.item_toppings_list|capfirst }}</p>
+                                            {% endif %}
+                                        </td>
+                                        <td class="dashboard-col-6">
+                                            <p>{{ x.item_total_price }}</p>
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                {% endfor %}
+            {% else %}
+                <p>There are no pending orders.</p>
+            {% endif %}
+    </div>
+</div>
+
+{% endblock %}

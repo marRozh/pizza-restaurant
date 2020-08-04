@@ -1,0 +1,29 @@
+{% extends 'orders/base.html' %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block body %}
+
+<div class="jumbotron" id="register-jumbotron">
+    <div class="container" id="register-container">
+        <h1>Register</h1>
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+
+            {% if form.errors %}
+                <p>Your Form Has Errors</p>
+            {% endif %}
+
+            {{ form.as_p }}
+
+           
+            <button type="submit" class="btn btn-primary">Register</button>
+          </form>
+
+          <a href="{% url 'index' %}">Login</a>
+    </div>
+</div>
+
+{% endblock %}

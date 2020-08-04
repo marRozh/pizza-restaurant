@@ -1,0 +1,53 @@
+{% extends 'orders/base.html' %}
+
+{% block title %}
+Log In Page
+{% endblock %}
+
+{% block body %}
+
+<div class="jumbotron" id="shoppingcart-jumbotron">
+    <div class="container" id="shoppingcart-container">
+
+        <h1>Shopping Cart</h1>
+
+        <table class="table" id="shoppingcart">
+            <tbody>
+                {% for x in order %}
+                    <tr>
+                        <td>
+                            <p>{{ x.item_name }} ({{ x.item_category }})</p>
+                        </td>
+                        <td>
+                            <p>{{ x.item_size }}</p>
+                        </td>
+                        <td>
+                            {% if x.item_toppings_list %}
+                                <p>{{ x.item_toppings_list }}</p>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <p>{{ x.item_total_price }}</p>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="shopping-cart-total">
+                        <h3>Total: {{ total }}</h3>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form class="checkout-form" action="{% url 'confirmorder' %}" method="post">
+            {% csrf_token %}
+            <button name="checkout" value="complete">CHECKOUT</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

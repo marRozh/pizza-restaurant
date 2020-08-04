@@ -1,0 +1,395 @@
+{% extends 'orders/base.html' %}
+
+{% block title %}
+Pinocchio's Pizza & Subs
+{% endblock %}
+
+{% block body %}
+
+<div class="jumbotron" id="index-jumbotron">
+    <div class="container" id="index-container">
+        <h1 id="welcome-message">Welcome, {{ user.first_name }}!</h1>
+
+        {% if request.user.is_staff %}
+        <div id="div-dashboard" class="nav justify-content-end">
+          <a href="{% url 'dashboard' %}">Dashboard</a>
+        </div>
+        {% endif %}
+
+
+        <h3 id="menu-title">Pinocchio's Pizza & Subs Menu</h3>
+        <div id="menu">
+
+            <div class="menu-container" id="regular-pizza">
+                <h4>Regular Pizza</h4>
+                <table class="table" id="regular-table">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col">Small</th>
+                            <th scope="col">Large</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for reg in regular %}
+                            {% if reg.size_name == 'Cheese'%}
+                                <tr>
+                                    <td class="menu-column-1" scope="row"><h5>{{ reg.size_name }}</h5></td>
+                                    <td class="menu-column-2" ></td>
+                                    <td class="menu-column-3" >
+                                        <form action="{% url 'addsize' %}" method="post" id="{{ reg.id }}-add-small" class="regular-form-add">
+                                            {% csrf_token %}
+                                            <p class="addsize-price-field">{{ reg.size_small_price }} </p>
+                                            <button type="submit" name="addsizeitem" value="{{ reg.id }} small {{ reg.size_small_price }}">Add</button>
+                                        </form>
+                                    </td>
+                                    <td class="menu-column-4" >
+                                        <form action="{% url 'addsize' %}" method="post" id="{{ reg.id }}-add-large" class="regular-form-add">
+                                            {% csrf_token %}
+                                            <p class="addsize-price-field">{{ reg.size_large_price }} </p>
+                                            <button type="submit" name="addsizeitem" value="{{ reg.id }} large {{ reg.size_large_price }}">Add</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% elif reg.size_name == 'Special' %}
+                                <tr>
+                                    <td class="menu-column-1" scope="row"><h5>{{ reg.size_name }}</h5></td>
+                                    <td class="menu-column-2" >
+                                        <p id="special-pizza-text">Spicy lamb sausage, tomatoes from Gragnano, roasted aubergine, mozzarella and wild garlic pesto</p>
+                                    </td>
+                                    <td class="menu-column-3" >
+                                        <form action="{% url 'addsize' %}" method="post" id="{{ reg.id }}-add-small" class="regular-form-add">
+                                            {% csrf_token %}
+                                            <p class="addsize-price-field">{{ reg.size_small_price }} </p>
+                                            <button type="submit" name="addsizeitem" value="{{ reg.id }} small {{ reg.size_small_price }}">Add</button>
+                                        </form>
+                                    </td>
+                                    <td class="menu-column-4" >
+                                        <form action="{% url 'addsize' %}" method="post" id="{{ reg.id }}-add-large" class="regular-form-add">
+                                            {% csrf_token %}
+                                            <p class="addsize-price-field">{{ reg.size_large_price }} </p>
+                                            <button type="submit" name="addsizeitem" value="{{ reg.id }} large {{ reg.size_large_price }}">Add</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td class="menu-column-1" scope="row"><h5>{{ reg.size_name }}</h5></td>
+                                    <td class="menu-column-2" >
+                                        <p id="{{reg.size_name}}" class="select-toppings">Click here to select your toppings</p>
+                                        <div class="regular-toppings"  style="display: none;" id="regular-toppings-{{reg.size_name}}">
+                                            {% for t in toppings %}
+                                                <input class="toppings-check-input" name="{{t}}" type="checkbox" value="{{reg.size_name}}" id="extra-{{t}}-{{ reg.id }}">
+                                                <label class="toppings-check-label" for="extra-{{t}}-{{ reg.id }}">
+                                                  {{ t }}
+                                                </label>
+                                                <br>
+                                            {% endfor %}
+                                        </div>
+                                    </td>
+                                    <td class="menu-column-3" >
+                                        <form action="{% url 'addsizepizza' %}" method="post" id="{{ reg.id }}-add-small" class="regular-form-add">
+                                            {% csrf_token %}
+                                            <input type="hidden" id="{{reg.id}}-small-price-input" name="{{ reg.size_small_price }}" value="{{ reg.size_small_price }}">
+                                            <label for="{{reg.id}}-small-price-input" id="{{reg.id}}-small-price"> {{ reg.size_small_price }} </label>
+                                            <button id="{{reg.id}}-add-small-reg" type="submit" name="addsizeitem" value="{{ reg.size_name }} small 0">Add</button>
+                                        </form>
+
+                                    </td>
+                                    <td class="menu-column-4" >
+                                        
+                                        <form action="{% url 'addsizepizza' %}" method="post" id="{{ reg.id }}-add-large" class="regular-form-add">
+                                            {% csrf_token %}
+                                            <input type="hidden" id="{{reg.id}}-large-price-input" name="{{ reg.size_large_price }}" value="{{ reg.size_large_price }}">
+                                            <label for="{{reg.id}}-large-price-input" id="{{reg.id}}-large-price"> {{ reg.size_large_price }} </label>
+                                            <button id="{{reg.id}}-add-large-reg" type="submit" name="addsizeitem" value="{{ reg.size_name }} large 0">Add</button>
+                                        </form>
+
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="menu-container" id="sicilian-pizza">
+                <h4>Sicilian Pizza</h4>
+                <table class="table" id="sicilian-table">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col">Small</th>
+                            <th scope="col">Large</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sic in sicilian %}
+                            {% if sic.size_name == 'Cheese'%}
+                                <tr>
+                                    <td class="menu-column-1" scope="row"><h5>{{ sic.size_name }}</h5></td>
+                                    <td class="menu-column-2" >
+                                    </td>
+                                    <td class="menu-column-3" >
+                                        <form action="{% url 'addsize' %}" method="post" id="{{ sic.id }}-add-small" class="sicilian-form-add">
+                                            {% csrf_token %}
+                                            <p class="addsize-price-field">{{ sic.size_small_price }} </p>
+                                            <button type="submit" name="addsizeitem" value="{{ sic.id }} small {{ sic.size_small_price }}">Add</button>
+                                        </form>
+                                    </td>
+                                    <td class="menu-column-4" >
+                                        <form action="{% url 'addsize' %}" method="post" id="{{ sic.id }}-add-large" class="sicilian-form-add">
+                                            {% csrf_token %}
+                                            <p class="addsize-price-field">{{ sic.size_large_price }} </p>
+                                            <button type="submit" name="addsizeitem" value="{{ sic.id }} large {{ sic.size_large_price }}">Add</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% elif sic.size_name == 'Special' %}
+                                <tr>
+                                    <td class="menu-column-1" scope="row"><h5>{{ sic.size_name }}</h5></td>
+                                    <td class="menu-column-2" >
+                                        <p id="special-pizza-text">Spicy lamb sausage, tomatoes from Gragnano, roasted aubergine, mozzarella and wild garlic pesto</p>
+                                    </td>
+                                    <td class="menu-column-3" >
+                                        <form action="{% url 'addsize' %}" method="post" id="{{ sic.id }}-add-small" class="sicilian-form-add">
+                                            {% csrf_token %}
+                                            <p class="addsize-price-field">{{ sic.size_small_price }} </p>
+                                            <button type="submit" name="addsizeitem" value="{{ sic.id }} small {{ sic.size_small_price }}">Add</button>
+                                        </form>
+                                    </td>
+                                    <td class="menu-column-4" >
+                                        <form action="{% url 'addsize' %}" method="post" id="{{ sic.id }}-add-large" class="sicilian-form-add">
+                                            {% csrf_token %}
+                                            <p class="addsize-price-field">{{ sic.size_large_price }} </p>
+                                            <button type="submit" name="addsizeitem" value="{{ sic.id }} large {{ sic.size_large_price }}">Add</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td class="menu-column-1" scope="row"><h5>{{ sic.size_name }}</h5></td>
+                                    <td class="menu-column-2" >
+                                        <p id="{{sic.size_name}}" class="select-toppings">Click here to select your toppings</p>
+                                        <div class="regular-toppings"  style="display: none;" id="regular-toppings-{{sic.size_name}}">
+                                            {% for t in toppings %}
+                                                <input class="toppings-check-input" name="{{t}}" type="checkbox" value="{{sic.size_name}}" id="extra-{{t}}-{{ sic.id }}">
+                                                <label class="toppings-check-label" for="extra-{{t}}-{{ sic.id }}">
+                                                  {{ t }}
+                                                </label>
+                                                <br>
+                                            {% endfor %}
+                                        </div>
+                                    </td>
+                                    <td class="menu-column-3" >
+                                        
+                                        <form action="{% url 'addsizepizza' %}" method="post" id="{{ sic.id }}-add-small" class="sicilian-form-add">
+                                            {% csrf_token %}
+                                            <input type="hidden" id="{{sic.id}}-small-price-input" name="{{ sic.size_small_price }}" value="{{ sic.size_small_price }}">
+                                            <label for="{{sic.id}}-small-price-input" id="{{sic.id}}-small-price"> {{ sic.size_small_price }} </label>
+                                            <button id="{{sic.id}}-add-small-reg" type="submit" name="addsizeitem" value="{{ sic.size_name }} small 0">Add</button>
+                                        </form>
+
+                                    </td>
+                                    <td class="menu-column-4" >
+                                        <form action="{% url 'addsizepizza' %}" method="post" id="{{ sic.id }}-add-large" class="sicilian-form-add">
+                                            {% csrf_token %}
+                                            <input type="hidden" id="{{sic.id}}-large-price-input" name="{{ sic.size_large_price }}" value="{{ sic.size_large_price }}">
+                                            <label for="{{sic.id}}-large-price-input" id="{{sic.id}}-large-price"> {{ sic.size_large_price }} </label>
+                                            <button id="{{sic.id}}-add-large-reg" type="submit" name="addsizeitem" value="{{ sic.size_name }} large 0">Add</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="menu-container" id="pasta">
+                <h4>Pasta</h4>
+                <table class="table" id="pasta-table">
+                    <tbody>                   
+                        {% for x in pasta %}
+                            <tr>
+                                <td class="menu-column-1" >
+                                    <h5>{{ x.item_name }}</h5>
+                                </td>
+                                <td class="menu-column-2" >
+                                </td>
+                                <td class="menu-column-3" >
+                                </td>
+                                <td class="menu-column-4" >
+                                    <p>{{ x.item_price }}</p>
+                                    <form action="{% url 'add' %}" method="post" id="{{ x.id }}-add">
+                                        {% csrf_token %}
+                                        <button name="add-item" type="submit" value="{{ x.id }}">Add</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div class="menu-container" id="salad">
+                <h4>Salads</h4>
+                <table class="table" id="salad-table">
+                    <tbody>  
+                        {% for x in salad %}
+                            <tr>
+                                <td class="menu-column-1" >
+                                    <h5>{{ x.item_name }}</h5>
+                                </td>
+                                <td class="menu-column-2" >
+                                </td>
+                                <td class="menu-column-3" >
+                                </td>
+                                <td class="menu-column-4" >
+                                    <p>{{ x.item_price }}</p>
+                                    <form action="{% url 'add' %}" method="post" id="{{ x.id }}-add">
+                                        {% csrf_token %}
+                                        <button name="add-item" type="submit" value="{{ x.id }}">Add</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="menu-container" id="platters">
+                <h4>Dinner Platters</h4>
+                <table class="table" id="platters-table">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col">Small</th>
+                            <th scope="col">Large</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for x in platter %}
+                            <tr>
+                                <td class="menu-column-1" scope="row"><h5>{{ x.size_name }}</h5></td>
+                                <td class="menu-column-2" ></td>
+                                <td class="menu-column-3" >
+                                    <form action="{% url 'addsize' %}" method="post" id="{{ x.id }}-add-small">
+                                        {% csrf_token %}
+                                        <p class="addsize-price-field">{{ x.size_small_price }} </p>
+                                        <button type="submit" name="addsizeitem" value="{{ x.id }} small {{ x.size_small_price }}">Add</button>
+                                    </form>
+
+                                </td>
+                                <td class="menu-column-4" > 
+                                    <form action="{% url 'addsize' %}" method="post" id="{{ x.id }}-add-large">
+                                        {% csrf_token %}
+                                        <p class="addsize-price-field">{{ x.size_large_price }} </p>
+                                        <button type="submit" name="addsizeitem" value="{{ x.id }} large {{ x.size_large_price }}">Add</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="menu-container" id="subs">
+                <h4>Subs</h4>
+                <table class="table" id="subs-table">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col">Small</th>
+                            <th scope="col">Large</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for x in sub %}
+                            {% if x.size_name != 'Steak + Cheese' %}
+                            <tr>
+                                <td class="menu-column-1" scope="row"><h5>{{ x.size_name }}</h5></td>
+                                <td class="menu-column-2" >
+                                    <div class="form-check">
+                                        <input class="cheese-check-input" type="checkbox" value="" id="extra-cheese-{{ x.id }}">
+                                        <label class="cheese-check-label" for="extra-cheese-{{ x.id }}">
+                                          Extra Cheese
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="menu-column-3" >
+                                    {% if x.size_small_price > 0 %}
+                                        <form action="{% url 'addsizecheese' %}" method="post" id="{{ x.id }}-add-small" class="subs-form-add">
+                                            {% csrf_token %}
+                                            <input type="hidden" id="{{x.id}}-small-price-input" name="{{ x.size_small_price }}" value="{{ x.size_small_price }}">
+                                            <label for="{{x.id}}-small-price-input" id="{{x.id}}-small-price"> {{ x.size_small_price }} </label>
+                                            <button id="{{x.id}}-add-small-sub" type="submit" name="addsizeitem" value="{{ x.id }} small {{ x.size_small_price }}">Add</button>
+                                        </form>
+                                    {% endif %}
+                                </td>
+                                <td class="menu-column-4" >
+                                    <form action="{% url 'addsizecheese' %}" method="post" id="{{ x.id }}-add-large" class="subs-form-add">
+                                        {% csrf_token %}
+                                        <input type="hidden" id="{{x.id}}-large-price-input" name="{{ x.size_large_price }}" value="{{ x.size_large_price }}">
+                                        <label for="{{x.id}}-large-price-input" id="{{x.id}}-large-price"> {{ x.size_large_price }} </label>
+                                        <button id="{{x.id}}-add-large-sub" type="submit" name="addsizeitem" value="{{ x.id }} large {{ x.size_large_price }}">Add</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% elif x.size_name == 'Steak + Cheese' %}
+                            <tr>
+                                <td  class="menu-column-1" scope="row"><h5>{{ x.size_name }}</h5></td>
+                                <td class="menu-column-2" >
+                                    <div class="form-check">
+                                        {% for y in subtopping %}
+                                            <input class="topping-check-input" name="{{y}}" type="checkbox" value="" id="extra-{{ y }}-{{ x.id }}">
+                                            <label class="topping-check-label" for="extra-{{ y }}-{{ x.id }}">
+                                              {{ y }}
+                                            </label>
+                                            <br>
+                                        {% endfor %}
+                                        <input class="topping-check-input" name="cheese" type="checkbox" value="" id="extra-cheese-{{ x.id }}">
+                                        <label class="topping-check-label" for="extra-cheese-{{ x.id }}">
+                                          Extra Cheese
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="menu-column-3" >
+                                    <form action="{% url 'addsizetop' %}" method="post" id="{{ x.id }}-add-small" class="subs-form-add">
+                                        {% csrf_token %}
+                                        <input type="hidden" id="{{x.id}}-small-price-input" name="{{ x.size_small_price }}" value="{{ x.size_small_price }}">
+                                        <label for="{{x.id}}-small-price-input" id="{{x.id}}-small-price"> {{ x.size_small_price }} </label>
+                                        <button id="{{x.id}}-add-small-sub" type="submit" name="addsizeitem" value="{{ x.id }} small 0">Add</button>
+                                    </form>
+                                </td>
+                                <td class="menu-column-4" >
+                                    <form action="{% url 'addsizetop' %}" method="post" id="{{ x.id }}-add-large" class="subs-form-add">
+                                        {% csrf_token %}
+                                        <input type="hidden" id="{{x.id}}-large-price-input" name="{{ x.size_large_price }}" value="{{ x.size_large_price }}">
+                                        <label for="{{x.id}}-large-price-input" id="{{x.id}}-large-price"> {{ x.size_large_price }} </label>
+                                        <button id="{{x.id}}-add-large-sub" type="submit" name="addsizeitem" value="{{ x.id }} large 0">Add</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div id="checkout-box">
+            <a href="{% url 'shoppingcart' %}"">Check Out</a>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

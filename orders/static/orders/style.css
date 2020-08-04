@@ -1,0 +1,623 @@
+nav #logout-button {
+  border: none;
+  border-radius: 5px;
+  background: #de6e84;
+  box-shadow: 5px 5px 6px #1d171c, inset 5px 5px 7px #ff85a0;
+}
+
+nav #logout-button:active {
+  border: none;
+  border-radius: 5px;
+  background: #de6e84;
+  box-shadow: inset 5px 5px 7px #af5768, inset -5px -5px 7px #ff85a0;
+}
+
+#register-jumbotron, #login-jumbotron, #dashboard-jumbotron, #shoppingcart-jumbotron, #ordered-jumbotron, #index-jumbotron {
+  height: 100%;
+  background-image: url("../orders/pizzabg1.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin-bottom: 0;
+  overflow-y: scroll;
+}
+
+#register-jumbotron #register-container, #login-jumbotron #login-container, #dashboard-jumbotron #dashboard-container, #shoppingcart-jumbotron #shoppingcart-container, #ordered-jumbotron #ordered-container, #index-jumbotron #index-container {
+  width: 50%;
+  margin-right: 0;
+  background-color: #c49f8f;
+  background-image: linear-gradient(17deg, #c49f8f 0%, #F1E7DE 100%);
+  border-radius: 5px;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+#index-jumbotron #index-container #menu #subs button, #index-jumbotron #index-container #menu #platters button, #index-jumbotron #index-container #menu #salad button, #index-jumbotron #index-container #menu #pasta button, #index-jumbotron #index-container #menu #sicilian-pizza .sicilian-form-add button, #index-jumbotron #index-container #menu #regular-pizza .regular-form-add button {
+  font-size: 0.6rem;
+  height: 20px;
+  width: 30px;
+  padding: 2px;
+  border: none;
+  background-color: #E60002;
+  color: #F1E7DE;
+  border-radius: 5px;
+  margin-left: 0.2rem;
+}
+
+#register-jumbotron #register-container button, #login-jumbotron #login-container button, #dashboard-jumbotron #dashboard-container button, #shoppingcart-jumbotron #shoppingcart-container form button, #index-jumbotron #index-container #checkout-box a {
+  color: #175703;
+  font-family: "Bebas Neue", cursive;
+  padding: 5px 10px;
+  font-size: 1.5rem;
+  border-radius: 7px;
+  border: none;
+  background: #c49f8f;
+  box-shadow: 5px 5px 10px #7a6359, -5px -5px 10px #e3b8a6;
+}
+
+#register-jumbotron #register-container button:active, #login-jumbotron #login-container button:active, #dashboard-jumbotron #dashboard-container button:active, #shoppingcart-jumbotron #shoppingcart-container form button:active, #index-jumbotron #index-container #checkout-box a:active {
+  color: #175703;
+  font-family: "Bebas Neue", cursive;
+  padding: 5px 10px;
+  font-size: 1.5rem;
+  border-radius: 7px;
+  border: none;
+  background: #c49f8f;
+  box-shadow: inset 5px 5px 7px #b29182, inset -5px -5px 7px #d6ad9c;
+}
+
+#register-jumbotron #register-container h1, #login-jumbotron #login-container h1, #dashboard-jumbotron #dashboard-container h1, #shoppingcart-jumbotron #shoppingcart-container h1, #ordered-jumbotron #ordered-container h1, #index-jumbotron #index-container #welcome-message {
+  color: #B00000;
+  text-align: center;
+  font-family: "Satisfy", cursive;
+}
+
+#ordered-jumbotron #ordered-container h3, #index-jumbotron #index-container #menu-title {
+  color: #175703;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 2rem;
+}
+
+#register-jumbotron #register-container input, #login-jumbotron #login-container input {
+  border: none;
+  border-radius: 5px;
+  background: #ffffff;
+  box-shadow: inset 7px 7px 11px #d9d9d9, inset -7px -7px 11px #ffffff;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: #30262E;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+p {
+  font-size: 0.6rem;
+}
+
+nav {
+  font-family: "Bebas Neue", cursive;
+  background-color: #30262E;
+}
+nav #website-heading, nav #nav-orders, nav #nav-cart {
+  color: #F1E7DE;
+  font-size: 1.5rem;
+}
+nav #nav-orders:hover {
+  text-decoration: none;
+}
+nav #nav-cart:hover {
+  text-decoration: none;
+}
+nav #right-side-nav {
+  width: 35%;
+  display: inline-flex;
+  justify-content: space-around;
+}
+nav #nav-logout {
+  color: #F1E7DE;
+  font-family: "Roboto", sans-serif;
+}
+nav #nav-logout:hover {
+  text-decoration: none;
+}
+
+#index-jumbotron #index-container #div-dashboard {
+  width: 100px;
+  margin-left: auto;
+  margin-right: 0;
+  padding: 10px 10px;
+  border-radius: 5px;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.3rem;
+  background-color: #2274a5;
+  margin-top: -4rem;
+}
+#index-jumbotron #index-container #div-dashboard a {
+  color: #F1E7DE;
+  margin: auto;
+}
+#index-jumbotron #index-container #div-dashboard a:hover {
+  text-decoration: none;
+}
+#index-jumbotron #index-container #menu {
+  width: 85%;
+  margin: auto;
+}
+#index-jumbotron #index-container #menu h4 {
+  color: #7CAA7C;
+  font-family: "Bebas Neue", cursive;
+}
+#index-jumbotron #index-container #menu th {
+  font-size: 0.8rem;
+  padding: 8px;
+  border: none;
+}
+#index-jumbotron #index-container #menu td {
+  padding: 8px;
+  border: none;
+}
+#index-jumbotron #index-container #menu .menu-column-1 h5 {
+  font-family: "Bebas Neue", cursive;
+}
+#index-jumbotron #index-container #menu #special-pizza-text {
+  color: #B00000;
+}
+#index-jumbotron #index-container #menu #regular-pizza .regular-form-add {
+  display: inline-flex;
+}
+#index-jumbotron #index-container #menu #regular-pizza .regular-form-add button:focus {
+  outline: none;
+}
+#index-jumbotron #index-container #menu #regular-pizza .regular-form-add label, #index-jumbotron #index-container #menu #regular-pizza p {
+  font-size: 0.8rem;
+}
+#index-jumbotron #index-container #menu #regular-pizza .regular-toppings label, #index-jumbotron #index-container #menu #regular-pizza input {
+  font-size: 0.8rem;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+}
+#index-jumbotron #index-container #menu #regular-pizza .regular-toppings {
+  display: none;
+}
+#index-jumbotron #index-container #menu #sicilian-pizza .sicilian-form-add {
+  display: inline-flex;
+}
+#index-jumbotron #index-container #menu #sicilian-pizza .sicilian-form-add button:focus {
+  outline: none;
+}
+#index-jumbotron #index-container #menu #sicilian-pizza .sicilian-form-add label, #index-jumbotron #index-container #menu #sicilian-pizza p {
+  font-size: 0.8rem;
+}
+#index-jumbotron #index-container #menu #sicilian-pizza .regular-toppings label, #index-jumbotron #index-container #menu #sicilian-pizza input {
+  font-size: 0.8rem;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+}
+#index-jumbotron #index-container #menu #pasta button:focus {
+  outline: none;
+}
+#index-jumbotron #index-container #menu #pasta p {
+  font-size: 0.8rem;
+  margin: 0;
+}
+#index-jumbotron #index-container #menu #pasta .menu-column-4 p, #index-jumbotron #index-container #menu #pasta form {
+  display: inline-flex;
+  vertical-align: middle;
+  width: 45%;
+}
+#index-jumbotron #index-container #menu #pasta .menu-column-1 {
+  width: 40%;
+}
+#index-jumbotron #index-container #menu #pasta .menu-column-2 {
+  width: 10%;
+}
+#index-jumbotron #index-container #menu #salad button:focus {
+  outline: none;
+}
+#index-jumbotron #index-container #menu #salad p {
+  font-size: 0.8rem;
+  margin: 0;
+}
+#index-jumbotron #index-container #menu #salad .menu-column-4 p, #index-jumbotron #index-container #menu #salad form {
+  display: inline-flex;
+  vertical-align: middle;
+  width: 45%;
+}
+#index-jumbotron #index-container #menu #salad .menu-column-1 {
+  width: 40%;
+}
+#index-jumbotron #index-container #menu #salad .menu-column-2 {
+  width: 10%;
+}
+#index-jumbotron #index-container #menu #platters button:focus {
+  outline: none;
+}
+#index-jumbotron #index-container #menu #platters p {
+  font-size: 0.8rem;
+  margin: 0;
+}
+#index-jumbotron #index-container #menu #platters .menu-column-4 p, #index-jumbotron #index-container #menu #platters form {
+  display: inline-flex;
+  vertical-align: middle;
+}
+#index-jumbotron #index-container #menu #platters .menu-column-1 {
+  width: 40%;
+}
+#index-jumbotron #index-container #menu #platters .menu-column-2 {
+  width: 30%;
+}
+#index-jumbotron #index-container #menu #subs button:focus {
+  outline: none;
+}
+#index-jumbotron #index-container #menu #subs .subs-form-add label {
+  font-size: 0.8rem;
+  margin: 0;
+}
+#index-jumbotron #index-container #menu #subs .subs-form-add {
+  display: inline-flex;
+}
+#index-jumbotron #index-container #menu #subs div input, #index-jumbotron #index-container #menu #subs div label {
+  font-size: 0.8rem;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+}
+#index-jumbotron #index-container #checkout-box {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+#index-jumbotron #index-container #checkout-box a:focus {
+  border: none;
+  outline: none;
+}
+#index-jumbotron #index-container #checkout-box a:hover {
+  text-decoration: none;
+}
+
+#ordered-jumbotron #ordered-container h5 {
+  color: #E60002;
+}
+#ordered-jumbotron #ordered-container table th {
+  font-size: 0.8rem;
+  padding: 8px;
+  border: none;
+}
+#ordered-jumbotron #ordered-container table td {
+  padding: 8px;
+  border: none;
+}
+#ordered-jumbotron #ordered-container table p {
+  margin-bottom: 0.2rem;
+}
+#ordered-jumbotron #ordered-container #no-pending, #ordered-jumbotron #ordered-container #no-complete {
+  margin-top: 3rem;
+}
+#ordered-jumbotron #ordered-container #no-pending p, #ordered-jumbotron #ordered-container #no-complete p {
+  font-size: 0.9rem;
+}
+
+#shoppingcart-jumbotron #shoppingcart-container form {
+  margin: auto;
+  width: 20%;
+}
+#shoppingcart-jumbotron #shoppingcart-container form button:focus {
+  outline: none;
+}
+#shoppingcart-jumbotron #shoppingcart-container table th {
+  font-size: 0.8rem;
+  padding: 8px;
+  border: none;
+}
+#shoppingcart-jumbotron #shoppingcart-container table td {
+  padding: 8px;
+  border: none;
+}
+#shoppingcart-jumbotron #shoppingcart-container h3 {
+  color: #E60002;
+  font-family: "Bebas Neue", cursive;
+}
+#shoppingcart-jumbotron #shoppingcart-container table p {
+  font-size: 0.8rem;
+}
+
+#dashboard-jumbotron #dashboard-container {
+  margin-top: 4rem;
+}
+#dashboard-jumbotron #dashboard-container table th {
+  font-size: 0.8rem;
+  padding: 8px;
+  border: none;
+}
+#dashboard-jumbotron #dashboard-container table td {
+  padding: 8px;
+  border: none;
+}
+#dashboard-jumbotron #dashboard-container button {
+  font-size: 1rem;
+}
+#dashboard-jumbotron #dashboard-container button:active {
+  font-size: 1rem;
+}
+#dashboard-jumbotron #dashboard-container button:focus {
+  outline: none;
+}
+#dashboard-jumbotron #dashboard-container h5 {
+  color: #E60002;
+}
+
+#login-jumbotron #login-container {
+  margin-top: 8rem;
+}
+#login-jumbotron #login-container form {
+  margin: auto;
+  width: 50%;
+}
+#login-jumbotron #login-container label {
+  color: #175703;
+}
+#login-jumbotron #login-container button {
+  display: flex;
+  margin: auto;
+}
+#login-jumbotron #login-container a {
+  font-family: "Bebas Neue", cursive;
+  color: #175703;
+  font-size: 1.5rem;
+}
+#login-jumbotron #login-container a:hover {
+  text-decoration: none;
+  color: #7CAA7C;
+}
+
+#register-jumbotron #register-container {
+  margin-top: 1rem;
+}
+#register-jumbotron #register-container label {
+  color: #175703;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+#register-jumbotron #register-container input {
+  height: 1.7rem;
+  width: 20rem;
+}
+#register-jumbotron #register-container input:focus {
+  outline: none;
+}
+#register-jumbotron #register-container .helptext {
+  font-size: 0.5rem;
+  color: #E60002;
+}
+#register-jumbotron #register-container form {
+  margin: auto;
+  width: 50%;
+}
+#register-jumbotron #register-container form p {
+  display: flex;
+  flex-direction: column;
+}
+#register-jumbotron #register-container form ul {
+  font-size: 0.5rem;
+  margin-bottom: 0;
+  padding-left: 10px;
+  color: #E60002;
+}
+#register-jumbotron #register-container button {
+  display: flex;
+  margin: auto;
+}
+#register-jumbotron #register-container a {
+  font-family: "Bebas Neue", cursive;
+  color: #175703;
+  font-size: 1.5rem;
+}
+#register-jumbotron #register-container a:hover {
+  text-decoration: none;
+  color: #7CAA7C;
+}
+
+.select-toppings {
+  color: #2274a5;
+}
+
+.select-toppings:hover {
+  color: #30262E;
+  cursor: pointer;
+}
+
+.menu-column-1 {
+  width: 20%;
+}
+
+.menu-column-2 {
+  width: 50%;
+}
+
+.menu-column-3 {
+  width: 15%;
+}
+
+.menu-column-4 {
+  width: 15%;
+}
+
+.dashboard-col-1 {
+  width: 15%;
+}
+
+.dashboard-col-2 {
+  width: 15%;
+}
+
+.dashboard-col-3 {
+  width: 20%;
+}
+
+.dashboard-col-4 {
+  width: 10%;
+}
+
+.dashboard-col-5 {
+  width: 30%;
+}
+
+.dashboard-col-6 {
+  width: 10%;
+}
+
+@media only screen and (min-width: 1214px) and (max-width: 1249px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  h5 {
+    font-size: 0.8rem;
+  }
+
+  p {
+    font-size: 0.6rem;
+  }
+}
+@media only screen and (min-width: 1030px) and (max-width: 1213px) {
+  #index-container, #shoppingcart-container, #ordered-container, #login-container, #register-container, #dashboard-container {
+    width: 60% !important;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  h5 {
+    font-size: 0.8rem;
+  }
+
+  p {
+    font-size: 0.6rem;
+  }
+
+  #right-side-nav {
+    width: 55% !important;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1029px) {
+  #index-container, #shoppingcart-container, #ordered-container, #login-container, #register-container, #dashboard-container {
+    width: 70% !important;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  h5 {
+    font-size: 0.8rem;
+  }
+
+  p {
+    font-size: 0.6rem;
+  }
+
+  #right-side-nav {
+    width: 55% !important;
+  }
+}
+@media only screen and (min-width: 0px) and (max-width: 991px) {
+  #index-container, #shoppingcart-container, #ordered-container, #login-container, #register-container, #dashboard-container {
+    width: 70% !important;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  h5 {
+    font-size: 0.8rem;
+  }
+
+  p {
+    font-size: 0.6rem;
+  }
+
+  #right-side-nav {
+    width: 55% !important;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
